@@ -1,5 +1,5 @@
 <?php
-require_once '../../../../utils/data.php';
+require_once '../../../../utils/functions.php';
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
 $garage = $id ? getGarageById($id) : null;
