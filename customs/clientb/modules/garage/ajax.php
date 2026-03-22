@@ -1,8 +1,17 @@
 <?php
 require_once '../../../../utils/functions.php';
 require_once '../../../../utils/cookie.php';
+require_once '../../../../utils/error.php';
 
-$garages = getGaragesByClient(getClient());
+use function Utils\Data\getGaragesByClient;
+use function Utils\Error\renderError;
+
+try {
+    $garages = getGaragesByClient(getClient());
+} catch (\RuntimeException $e) {
+    renderError($e->getMessage());
+    return;
+}
 ?>
 
 <table>

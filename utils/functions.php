@@ -1,6 +1,27 @@
 <?php
+
+namespace Utils\Data;
+
 function loadJson(string $filename): array {
-    return json_decode(file_get_contents(__DIR__ . '/../data/' . $filename), true);
+    $path = __DIR__ . '/../data/' . $filename;
+
+    if (!file_exists($path)) {
+        throw new \RuntimeException("Fichier introuvable : {$filename}");
+    }
+
+    $content = file_get_contents($path);
+
+    if ($content === false) {
+        throw new \RuntimeException("Impossible de lire le fichier : {$filename}");
+    }
+
+    $data = json_decode($content, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        throw new \RuntimeException("JSON invalide dans {$filename} : " . json_last_error_msg());
+    }
+
+    return $data;
 }
 
 function getCars(string $client): array {

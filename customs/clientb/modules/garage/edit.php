@@ -1,11 +1,21 @@
 <?php
 require_once '../../../../utils/functions.php';
+require_once '../../../../utils/error.php';
+
+use function Utils\Data\getGarageById;
+use function Utils\Error\renderError;
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
-$garage = $id ? getGarageById($id) : null;
+
+try {
+    $garage = $id ? getGarageById($id) : null;
+} catch (\RuntimeException $e) {
+    renderError($e->getMessage());
+    return;
+}
 
 if (!$garage) {
-    echo '<p>Garage introuvable.</p>';
+    renderError('Garage introuvable.');
     return;
 }
 ?>

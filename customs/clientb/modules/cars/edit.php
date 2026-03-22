@@ -1,11 +1,21 @@
 <?php
 require_once '../../../../utils/functions.php';
+require_once '../../../../utils/error.php';
+
+use function Utils\Data\getCarById;
+use function Utils\Error\renderError;
 
 $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
-$car = $id ? getCarById($id) : null;
+
+try {
+    $car = $id ? getCarById($id) : null;
+} catch (\RuntimeException $e) {
+    renderError($e->getMessage());
+    return;
+}
 
 if (!$car) {
-    echo '<p>Voiture introuvable.</p>';
+    renderError('Voiture introuvable.');
     return;
 }
 ?>

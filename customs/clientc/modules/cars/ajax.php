@@ -1,8 +1,17 @@
 <?php
 require_once '../../../../utils/functions.php';
 require_once '../../../../utils/cookie.php';
+require_once '../../../../utils/error.php';
 
-$clientCars = getCars(getClient());
+use function Utils\Data\getCars;
+use function Utils\Error\renderError;
+
+try {
+    $clientCars = getCars(getClient());
+} catch (\RuntimeException $e) {
+    renderError($e->getMessage());
+    return;
+}
 ?>
 
 <table>
