@@ -6,6 +6,7 @@ require_once '../../../../utils/error.php';
 use function Utils\Data\getCars;
 use function Utils\Data\getGaragesById;
 use function Utils\Error\renderError;
+use function Utils\Cookie\getClient;
 
 try {
     $clientCars = getCars(getClient());
