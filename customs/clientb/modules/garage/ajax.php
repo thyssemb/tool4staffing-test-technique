@@ -15,19 +15,25 @@ try {
 }
 ?>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Adresse</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($garages as $garage): ?>
-        <tr data-id="<?= $garage['id'] ?>">
-            <td><?= htmlspecialchars($garage['title']) ?></td>
-            <td><?= htmlspecialchars($garage['address']) ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<div class="table-container">
+    <div class="table-header">
+        <h2>Garages</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($garages as $garage): ?>
+            <tr data-id="<?= $garage['id'] ?>">
+                <td><?= htmlspecialchars($garage['title']) ?></td>
+                <td><?= htmlspecialchars($garage['address']) ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

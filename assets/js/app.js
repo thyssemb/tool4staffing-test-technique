@@ -1,3 +1,5 @@
+const $dynamicDiv = $('.dynamic-div');
+
 function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -15,54 +17,51 @@ function buildUrl(client, module, script) {
     return `customs/${client}/modules/${module}/${script}.php`;
 }
 
+function renderError() {
+    $dynamicDiv.html('<p class="text-red-500 text-sm">Erreur de chargement.</p>');
+}
+
 function updateModuleNav() {
     const client = getClient();
     if (client === 'clientb') {
-        $('#module-nav').show();
+        $('#module-nav').removeClass('hidden');
     } else {
-        $('#module-nav').hide();
-        $('.dynamic-div').data('module', 'cars');
+        $('#module-nav').addClass('hidden');
+        $dynamicDiv.data('module', 'cars');
     }
 }
 
 function loadModule(script) {
-    const div = $('.dynamic-div');
-    const module = div.data('module');
-    const client = getClient();
-    const url = buildUrl(client, module, script);
+    const module = $dynamicDiv.data('module');
+    const url = buildUrl(getClient(), module, script);
 
     $.ajax({
         url,
         success: function(html) {
-            div.html(html);
+            $dynamicDiv.html(html);
             bindCarClick(module);
         },
-        error: function() {
-            div.html('<p>Erreur de chargement.</p>');
-        }
+        error: renderError
     });
 }
 
 function bindCarClick(module) {
-    const client = getClient();
-    $('.dynamic-div tr[data-id]').on('click', function() {
+    $dynamicDiv.find('tr[data-id]').on('click', function() {
         const id = $(this).data('id');
-        const url = buildUrl(client, module, 'edit') + '?id=' + id;
+        const url = buildUrl(getClient(), module, 'edit') + '?id=' + id;
 
         $.ajax({
             url,
             success: function(html) {
-                $('.dynamic-div').html(html);
+                $dynamicDiv.html(html);
             },
-            error: function() {
-                $('.dynamic-div').html('<p>Erreur de chargement.</p>');
-            }
+            error: renderError
         });
     });
 }
 
 function bindBackButton() {
-    $('.dynamic-div').on('click', '#back-btn', function() {
+    $dynamicDiv.on('click', '#back-btn', function() {
         loadModule('ajax');
     });
 }
@@ -83,7 +82,7 @@ $(document).ready(function() {
     });
 
     $('#module-nav button').on('click', function() {
-        $('.dynamic-div').data('module', $(this).data('module'));
+        $dynamicDiv.data('module', $(this).data('module'));
         loadModule('ajax');
     });
 });

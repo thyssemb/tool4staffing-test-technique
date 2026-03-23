@@ -1,9 +1,112 @@
-.old-car {
-    background-color: #fee2e2;
-    color: #dc2626;
+/* Table */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    overflow: hidden;
 }
 
-.new-car {
-    background-color: #dcfce7;
-    color: #16a34a;
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.table-container thead tr {
+    background: #f8f9fc;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-container thead th {
+    padding: 12px 24px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table-container tbody tr {
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.table-container tbody tr:hover {
+    background: #fff7f5;
+}
+
+.table-container tbody td {
+    padding: 14px 24px;
+    color: #374151;
+}
+
+.table-container tbody td:first-child {
+    font-weight: 500;
+    color: #111827;
+}
+
+/* Detail view */
+.detail-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    padding: 32px;
+    max-width: 600px;
+}
+
+.detail-container h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1B2B4B;
+    margin-bottom: 24px;
+}
+
+.detail-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-container ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #374151;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+/* Back button */
+#back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 8px 16px;
+    background: #1B2B4B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+#back-btn:hover {
+    background: #FF5A36;
+}
+
+.table-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1B2B4B;
 }

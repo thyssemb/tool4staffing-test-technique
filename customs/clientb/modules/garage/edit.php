@@ -20,10 +20,15 @@ if (!$garage) {
 }
 ?>
 
-<button id="back-btn">← Retour</button>
+<div class="detail-container">
+    <button id="back-btn">← Retour</button>
 
-<h2><?= htmlspecialchars($garage['title']) ?></h2>
+    <h2><?= htmlspecialchars($garage['title']) ?></h2>
 
-<ul>
-    <li><strong>Adresse :</strong> <?= htmlspecialchars($garage['address']) ?></li>
-</ul>
+    <ul>
+        <li>
+            <strong>Adresse :</strong>
+            <?= htmlspecialchars($garage['address']) ?>
+        </li>
+    </ul>
+</div>

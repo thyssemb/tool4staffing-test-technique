@@ -17,21 +17,27 @@ try {
 }
 ?>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Marque</th>
-            <th>Garage</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($clientCars as $car): ?>
-        <tr data-id="<?= $car['id'] ?>">
-            <td><?= htmlspecialchars(strtolower($car['modelName'])) ?></td>
-            <td><?= htmlspecialchars($car['brand']) ?></td>
-            <td><?= htmlspecialchars($garagesById[$car['garageId']]['title'] ?? 'Inconnu') ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<div class="table-container">
+    <div class="table-header">
+        <h2>Véhicules</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Marque</th>
+                <th>Garage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($clientCars as $car): ?>
+            <tr data-id="<?= $car['id'] ?>">
+                <td><?= htmlspecialchars(strtolower($car['modelName'])) ?></td>
+                <td><?= htmlspecialchars($car['brand']) ?></td>
+                <td><?= htmlspecialchars($garagesById[$car['garageId']]['title'] ?? 'Inconnu') ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
