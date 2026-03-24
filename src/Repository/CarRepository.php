@@ -14,12 +14,12 @@ class CarRepository
 
         return array_map(fn($car) => new Car(
             $car['id'],
-            $car['modelName'],
-            $car['brand'],
-            $car['year'],
-            $car['power'],
-            $car['colorHex'],
-            $car['customer'] ?? $car['client'] ?? 'clienta',  // Fix: JSON uses 'customer'
+            $car['modelName'] ?? '',
+            $car['brand'] ?? '',
+            $car['year'] ?? 0,
+            $car['power'] ?? 0,
+            $car['colorHex'] ?? '',
+            $car['customer'] ?? $car['client'] ?? 'clienta',
             $car['garageId'] ?? null
         ), $data);
     }

@@ -16,16 +16,14 @@ class GarageRepository
             $garage['id'],
             $garage['title'],
             $garage['address'],
-            $garage['customer'] ?? $garage['client'] ?? 'clienta'  // Fix: JSON uses 'customer'
+            $garage['customer'] ?? $garage['client'] ?? 'clienta'
         ), $data);
     }
 
     public function findById(int $id): ?Garage
     {
         foreach ($this->findAll() as $garage) {
-            if ($garage->id === $id) {
-                return $garage;
-            }
+            if ($garage->id === $id) return $garage;
         }
         return null;
     }
