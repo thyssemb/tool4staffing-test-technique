@@ -1,7 +1,15 @@
 <?php
 /** @var array $garages */
 /** @var object $clientContext */
-$fields = ['title', 'address']; // Pour l'instant, fixe pour garage
+$fields = ['nom', 'adresse'];
+
+function getHeaderLabel($field) {
+    $labels = [
+        'nom' => 'Nom du garage',
+        'adresse' => 'Adresse'
+    ];
+    return $labels[$field] ?? ucfirst($field);
+}
 ?>
 
 <div class="table-container">
@@ -9,15 +17,15 @@ $fields = ['title', 'address']; // Pour l'instant, fixe pour garage
         <thead>
             <tr>
                 <?php foreach ($fields as $f): ?>
-                    <th><?= ucfirst($f) ?></th>
+                    <th><?= getHeaderLabel($f) ?></th>
                 <?php endforeach; ?>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($garages as $garage): ?>
                 <tr onclick="loadGarage(<?= $garage->id ?>)">
-                    <td><?= htmlspecialchars($garage->title) ?></td>
-                    <td><?= htmlspecialchars($garage->address) ?></td>
+                    <td><?= htmlspecialchars($garage->nom) ?></td>
+                    <td><?= htmlspecialchars($garage->adresse) ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -3,9 +3,11 @@
 /** @var object $clientContext */
 ?>
 
-<ul>
-    <li><strong>Nom :</strong> <?= htmlspecialchars($garage->title) ?></li>
-    <li><strong>Adresse :</strong> <?= htmlspecialchars($garage->address) ?></li>
-</ul>
-
-<button id="back-btn" data-module="garages">← Retour</button>
+<div class="detail-container">
+    <h2>Détails du garage</h2>
+    <ul>
+        <li><strong>Nom :</strong> <?= htmlspecialchars($garage->nom) ?></li>
+        <li><strong>Adresse :</strong> <?= htmlspecialchars($garage->adresse) ?></li>
+    </ul>
+    <button id="back-btn" data-module="garages">← Retour</button>
+</div>
