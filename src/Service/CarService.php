@@ -24,7 +24,7 @@ class CarService
             $garageRepo = new GarageRepository();
             $this->garagesCache = [];
             foreach ($garageRepo->findAll() as $garage) {
-                $this->garagesCache[$garage->id] = $garage->title;
+                $this->garagesCache[$garage->id] = $garage->nom;
             }
         }
         return $this->garagesCache;
@@ -37,6 +37,7 @@ class CarService
 
         // filtrer par client
         $cars = array_filter($cars, fn($car) => $car->client === $client);
+        $cars = array_values($cars); // Réindexer le tableau
 
         // config client
         $fields = $this->config['clients'][$client]['showFields'] ?? [];
