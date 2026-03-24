@@ -49,6 +49,9 @@ if (!empty($cars)) {
                             <td>
                                 <?php if ($f === 'color' || $f === 'couleur'): ?>
                                     <span style="width:20px; height:20px; display:inline-block; border-radius:50%; background:<?= $car->couleurHex ?>;" title="<?= htmlspecialchars($car->couleurHex) ?>"></span>
+                                    <?php if ($car->client === 'clientc'): ?>
+                                        <span style="margin-left: 8px; font-family: monospace; font-size: 0.85em;"><?= htmlspecialchars($car->couleurHex) ?></span>
+                                    <?php endif; ?>
                                 <?php elseif ($f === 'year'): ?>
                                     <?= htmlspecialchars($car->getFormattedYear()) ?>
                                 <?php elseif ($f === 'modelName' && $car->client === 'clientb'): ?>
