@@ -1,35 +1,30 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-
-require_once __DIR__ . '/../utils/functions.php';
-
-use function Utils\Data\loadJson;
+use App\Repository\CarRepository;
 
 class DataTest extends TestCase
 {
-    public function test_load_valid_json_returns_array(): void
+    public function test_load_cars_returns_array(): void
     {
-        $result = loadJson('cars.json');
+        $repo = new CarRepository();
+        $result = $repo->findAll();
         $this->assertIsArray($result);
         $this->assertNotEmpty($result);
     }
 
-    public function test_load_missing_file_throws_exception(): void
+    public function test_find_car_by_id_returns_car(): void
     {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessageMatches('/introuvable/');
-        loadJson('nonexistent.json');
+        $repo = new CarRepository();
+        $car = $repo->findById(1);
+        $this->assertNotNull($car);
+        $this->assertSame(1, $car->id);
     }
 
-    public function test_load_invalid_json_throws_exception(): void
+    public function test_find_car_by_invalid_id_returns_null(): void
     {
-        file_put_contents(__DIR__ . '/../data/test_invalid.json', '{invalid json}');
-
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessageMatches('/JSON invalide/');
-        loadJson('test_invalid.json');
-
-        unlink(__DIR__ . '/../data/test_invalid.json');
+        $repo = new CarRepository();
+        $car = $repo->findById(9999);
+        $this->assertNull($car);
     }
 }
