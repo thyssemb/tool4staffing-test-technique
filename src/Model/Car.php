@@ -9,11 +9,11 @@ class Car
 
     public function __construct(
         public int $id,
-        public string $modelName,
-        public string $brand,
-        public int $year,
-        public int $power,
-        public string $colorHex,
+        public string $nomModele,
+        public string $marque,
+        public int $annee,
+        public int $puissance,
+        public string $couleurHex,
         public string $client,
         public ?int $garageId = null
     ) {}
@@ -21,19 +21,27 @@ class Car
     public function __get(string $name)
     {
         return match($name) {
-            'color' => $this->colorHex,
+            'modelName' => $this->nomModele,
+            'brand' => $this->marque,
+            'year' => $this->annee,
+            'power' => $this->puissance,
+            'color' => $this->couleurHex,
+            'colorHex' => $this->couleurHex,
+            'couleur' => $this->couleurHex,
+            'formattedYear' => $this->getFormattedYear(),
+            'ageClass' => $this->getAgeClass(),
             default => null
         };
     }
 
     public function getFormattedYear(): string
     {
-        return date('Y', $this->year);
+        return date('Y', $this->annee);
     }
 
     public function getAge(): int
     {
-        return date('Y') - date('Y', $this->year);
+        return date('Y') - date('Y', $this->annee);
     }
 
     public function getAgeClass(): string
