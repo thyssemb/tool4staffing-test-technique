@@ -18,21 +18,27 @@ Application web permettant de servir du contenu personnalisé à plusieurs clien
 
 ---
 
-## Installation
-```bash
-# Cloner le projet
-git clone 
+## Installation avec Docker
+1. Cloner le projet
 
-# Installer les dépendances
-composer install
-
-# Lancer un serveur PHP local
-php -S localhost:8000
+2. Lancer les services Docker en arrière-plan
+```
+docker-compose up -d --build
+```
+3. Vérifier que les conteneurs tournent
+```
+docker-compose ps
 ```
 
-Ouvrir `http://localhost:8000`
-
----
+Ouvrir ensuite dans le navigateur :
+```
+http://localhost:8080
+```
+Exécuter PHPUnit dans le conteneur
+Lancer PHPUnit via le conteneur web
+```
+docker-compose exec web phpunit
+```
 
 ## Architecture
 ```
