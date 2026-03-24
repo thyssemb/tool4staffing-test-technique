@@ -6,8 +6,8 @@ class Garage
 {
     public function __construct(
         public int $id,
-        public string $title,
-        public string $address,
+        public string $nom,
+        public string $adresse,
         public string $client
     ) {}
 }
