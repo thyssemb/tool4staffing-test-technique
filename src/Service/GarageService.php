@@ -23,6 +23,7 @@ class GarageService
 
         // filtrer par client
         $garages = array_filter($garages, fn($garage) => $garage->client === $client);
+        $garages = array_values($garages); // Réindexer le tableau
 
         return $garages;
     }
