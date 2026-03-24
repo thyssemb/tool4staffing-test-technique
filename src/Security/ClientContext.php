@@ -13,9 +13,9 @@ class ClientContext
 
     public function getClient(): string
     {
-        $client = $_COOKIE['client'] ?? '';
+        $client = $_COOKIE['client'] ?? 'clienta';
         if (!in_array($client, array_keys($this->whitelist))) {
-            throw new \RuntimeException("Client non autorisé");
+            return 'clienta'; // Default to clienta if invalid
         }
         return $client;
     }

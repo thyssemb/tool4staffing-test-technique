@@ -110,3 +110,12 @@
     font-weight: 600;
     color: #1B2B4B;
 }
+
+/* Car age classes */
+.old-car {
+    background-color: #fee2e2 !important;
+}
+
+.new-car {
+    background-color: #dcfce7 !important;
+}

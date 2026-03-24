@@ -19,7 +19,7 @@ class CarRepository
             $car['year'],
             $car['power'],
             $car['colorHex'],
-            $car['client'],
+            $car['customer'] ?? $car['client'] ?? 'clienta',  // Fix: JSON uses 'customer'
             $car['garageId'] ?? null
         ), $data);
     }

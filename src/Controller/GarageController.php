@@ -2,14 +2,19 @@
 namespace App\Controller;
 
 use App\Service\GarageService;
+use App\Repository\GarageRepository;
+use App\Security\ClientContext;
 
 class GarageController
 {
     private GarageService $service;
 
-    public function __construct(GarageService $service)
+    public function __construct()
     {
-        $this->service = $service;
+        $this->service = new GarageService(
+            new GarageRepository(),
+            new ClientContext()
+        );
     }
 
     public function list()

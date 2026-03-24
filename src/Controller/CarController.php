@@ -1,16 +1,21 @@
 <?php
+
 namespace App\Controller;
 
 use App\Service\CarService;
+use App\Repository\CarRepository;
 use App\Security\ClientContext;
 
 class CarController
 {
     private CarService $service;
 
-    public function __construct(CarService $service)
+    public function __construct()
     {
-        $this->service = $service;
+        $this->service = new CarService(
+            new CarRepository(),
+            new ClientContext()
+        );
     }
 
     public function list()

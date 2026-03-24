@@ -4,6 +4,9 @@ namespace App\Model;
 
 class Car
 {
+    public ?string $garage = null;
+    public array $visibleFields = [];
+
     public function __construct(
         public int $id,
         public string $modelName,
@@ -14,6 +17,14 @@ class Car
         public string $client,
         public ?int $garageId = null
     ) {}
+
+    public function __get(string $name)
+    {
+        return match($name) {
+            'color' => $this->colorHex,
+            default => null
+        };
+    }
 
     public function getFormattedYear(): string
     {
