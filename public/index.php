@@ -4,8 +4,8 @@ declare(strict_types=1);
 use App\Core\Router;
 
 // Debug
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 
 require __DIR__ . '/../vendor/autoload.php';
 
