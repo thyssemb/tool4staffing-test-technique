@@ -61,13 +61,11 @@ class CarService
             return null;
         }
 
-        // Vérifier que la voiture appartient au client
         $client = $this->clientContext->getClient();
         if ($car->client !== $client) {
             return null;
         }
 
-        // config client
         $fields = $this->config['clients'][$client]['showFields'] ?? [];
         $car->visibleFields = $fields;
 

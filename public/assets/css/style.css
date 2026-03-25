@@ -1,8 +1,8 @@
 /* Table */
 .table-container {
-    background: white;
+    background: #1f2937;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     overflow: hidden;
 }
 
@@ -13,8 +13,8 @@
 }
 
 .table-container thead tr {
-    background: #f8f9fc;
-    border-bottom: 1px solid #e5e7eb;
+    background: #111827;
+    border-bottom: 1px solid #374151;
 }
 
 .table-container thead th {
@@ -22,36 +22,36 @@
     text-align: left;
     font-size: 0.75rem;
     font-weight: 600;
-    color: #6b7280;
+    color: #9ca3af;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
 .table-container tbody tr {
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid #374151;
     cursor: pointer;
     transition: background 0.15s;
 }
 
 .table-container tbody tr:hover {
-    background: #fff7f5;
+    background: #2d1f1a;
 }
 
 .table-container tbody td {
     padding: 14px 24px;
-    color: #374151;
+    color: #d1d5db;
 }
 
 .table-container tbody td:first-child {
     font-weight: 500;
-    color: #111827;
+    color: #f9fafb;
 }
 
 /* Detail view */
 .detail-container {
-    background: white;
+    background: #1f2937;
     border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     padding: 32px;
     max-width: 600px;
 }
@@ -59,7 +59,7 @@
 .detail-container h2 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1B2B4B;
+    color: #f9fafb;
     margin-bottom: 24px;
 }
 
@@ -74,9 +74,9 @@
     align-items: center;
     gap: 8px;
     font-size: 0.9rem;
-    color: #374151;
+    color: #d1d5db;
     padding-bottom: 12px;
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid #374151;
 }
 
 /* Back button */
@@ -86,7 +86,7 @@
     gap: 6px;
     margin-bottom: 20px;
     padding: 8px 16px;
-    background: #1B2B4B;
+    background: #FF5A36;
     color: white;
     border: none;
     border-radius: 8px;
@@ -97,25 +97,33 @@
 }
 
 #back-btn:hover {
-    background: #FF5A36;
+    background: #e04a28;
 }
 
 .table-header {
     padding: 16px 24px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #374151;
 }
 
 .table-header h2 {
     font-size: 1rem;
     font-weight: 600;
-    color: #1B2B4B;
+    color: #f9fafb;
 }
 
 /* Car age classes */
 .old-car {
-    background-color: #fee2e2 !important;
+    background-color: #3b1a1a !important;
+}
+
+.old-car td {
+    color: #fca5a5 !important;
 }
 
 .new-car {
-    background-color: #dcfce7 !important;
+    background-color: #14291e !important;
+}
+
+.new-car td {
+    color: #86efac !important;
 }

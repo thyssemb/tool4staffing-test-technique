@@ -14,12 +14,11 @@ function getHeaderLabel($field) {
     return $labels[$field] ?? ucfirst($field);
 }
 
-// Récupérer les champs depuis la première voiture ou depuis la config
 $fields = [];
 if (!empty($cars)) {
     $fields = $cars[0]->visibleFields ?? [];
 } else {
-    // Fallback: récupérer depuis le cookie et la config
+
     $client = $_COOKIE['client'] ?? 'clienta';
     $config = include __DIR__ . '/../../config.php';
     $fields = $config['clients'][$client]['showFields'] ?? [];

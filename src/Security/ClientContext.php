@@ -15,7 +15,7 @@ class ClientContext
     {
         $client = $_COOKIE['client'] ?? 'clienta';
         if (!in_array($client, array_keys($this->whitelist))) {
-            return 'clienta'; // Default to clienta if invalid
+            return 'clienta';
         }
         return $client;
     }
